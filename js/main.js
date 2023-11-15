@@ -4,7 +4,7 @@ let guess;
 let attempts = 0;
 const maxAttempts = 5;
 let maxNum = 100;
-let recentGuess = ['__'];
+let recentGuess = ['<-❔->'];
 
 //* Hämta element
 const appContainer = document.getElementById('app-container');
