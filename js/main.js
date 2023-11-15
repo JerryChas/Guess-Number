@@ -20,6 +20,10 @@ const recentGuessElement = document.getElementById('recent-guess')
 
 //* Funktioner
 
+// Funktion för att hämta värdet från input
+function getInputValue() {
+    return parseInt(numInput.value);
+}
 //Gissa
 function makeGuess() {
     // Sparar värde från input
