@@ -4,7 +4,7 @@ let guess;
 let attempts = 0;
 const maxAttempts = 5;
 let maxNum = 100;
-let recentGuess = [randomNum];
+let recentGuess = ['__'];
 
 //* Hämta element
 const appContainer = document.getElementById('app-container');
@@ -16,7 +16,7 @@ numInput.max = maxNum;
 const numInputBtn = document.getElementById('num-input-btn'); 
 const infoText = document.getElementById('info-text');
 const playAgainBtn = document.getElementById('play-again-btn')
-const recentGuess = document.getElementById('recent-guess')
+const recentGuessElement = document.getElementById('recent-guess')
 
 //* Funktioner
 
@@ -52,6 +52,8 @@ function makeGuess() {
             }
         }
         console.log(`gissat nummer: ${guess}`);
+
+        addRecentGuess()
         
         // Lägg till ett villkor för att avsluta spelet när maxAttempts uppnås
         if (attempts === maxAttempts) {
@@ -73,11 +75,18 @@ function makeGuess() {
 
 //när spelet är över
 function gameOver() {
+    //inaktivera input  och knapp
     numInput.disabled = true;
     numInputBtn.disabled = true;
-
+    
+    //Visa play again-knappen
     playAgainBtn.style.visibility = 'unset';
+    //lägg focus på knappen
+    setTimeout(function() {
+        playAgainBtn.focus();
+    }, 1);;
 
+    //Ladda om sidan vid klick på knappen
     playAgainBtn.addEventListener('click', function () {
         location.reload();
     });
@@ -88,9 +97,26 @@ function gameOver() {
     })
 }
 
-function recentGuess() {
-    
-
+function addRecentGuess() {
+    //om fel svar
+    if (guess !== randomNum){
+        //lagra gissning i array
+        if (guess < randomNum) {
+            recentGuess.unshift(guess)
+        } else {
+            recentGuess.push(guess)
+        }
+    }
+    // Anropa sorteringsfunktionen
+    recentGuess = sortArrayNumerically(recentGuess);
+    //presentera gissade nummer 
+    recentGuessElement.innerText = `${recentGuess.join('  ')}`;
+}
+//Funktion för att sortera i nummerordning
+function sortArrayNumerically(array) {
+    return array.sort(function(a, b) {
+        return a - b;
+    });
 }
 
 
