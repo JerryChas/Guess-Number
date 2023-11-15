@@ -16,6 +16,7 @@ numInput.max = maxNum;
 const numInputBtn = document.getElementById('num-input-btn'); 
 const infoText = document.getElementById('info-text');
 const playAgainBtn = document.getElementById('play-again-btn')
+const recentGuess = document.getElementById('recent-guess')
 
 //* Funktioner
 
