@@ -4,7 +4,7 @@ let guess;
 let attempts = 0;
 const maxAttempts = 5;
 let maxNum = 100;
-let recentGuess = ['__'];
+let recentGuess = ['<❔>'];
 
 //* Hämta element
 const appContainer = document.getElementById('app-container');
@@ -33,23 +33,10 @@ function makeGuess() {
     } else {
         // Om korrekt gissat
         if (guess === randomNum) {
-            console.log('Correct');
-            // Skriv ut att det blev en VINST!
-            headline.textContent = 'WINNER!'
-            infoText.textContent = `Correct number was ${randomNum}`;
-            appContainer.style.backgroundColor = 'green';
-            document.body.style.backgroundColor = 'lightgreen';
+            correctGuess();
             gameOver();
         } else {
-            attempts++;
-            attemptsLeft.textContent = `❤️ ${maxAttempts - attempts}`;
-            
-            // Ge ledtråd Högre eller Lägre
-            if (guess < randomNum) {
-                infoText.textContent = `👆Higher than ${guess}`;
-            } else {
-                infoText.textContent = `👇Lower than ${guess}`;
-            }
+            incorrectGuess();
         }
         console.log(`gissat nummer: ${guess}`);
 
@@ -72,7 +59,6 @@ function makeGuess() {
     // Tömmer input
     numInput.value = '';
 }
-
 //när spelet är över
 function gameOver() {
     //inaktivera input  och knapp
@@ -96,7 +82,7 @@ function gameOver() {
         }
     })
 }
-
+//visar tidigare gissningar
 function addRecentGuess() {
     //om fel svar
     if (guess !== randomNum){
@@ -120,7 +106,27 @@ function sortArrayNumerically(array) {
         return a - b;
     });
 }
+// FEL gissning
+function incorrectGuess() {
+    attempts++;
+    attemptsLeft.textContent = `❤️ ${maxAttempts - attempts}`;
 
+    // Ge ledtråd Högre eller Lägre
+    if (guess < randomNum) {
+        infoText.textContent = `👆Higher than ${guess}`;
+    } else {
+        infoText.textContent = `👇Lower than ${guess}`;
+    }
+}
+// RÄTT gissning
+function correctGuess() {
+    console.log('Correct');
+    headline.textContent = 'WINNER!';
+    infoText.textContent = `Correct number was ${randomNum}`;
+    appContainer.style.backgroundColor = 'green';
+    document.body.style.backgroundColor = 'lightgreen';
+    gameOver();
+}
 
 //*----------Huvudprogram----------*//
 
