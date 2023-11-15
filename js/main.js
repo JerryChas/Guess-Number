@@ -24,6 +24,16 @@ const recentGuessElement = document.getElementById('recent-guess')
 function getInputValue() {
     return parseInt(numInput.value);
 }
+// Funktion för att kontrollera inmatningen
+function validateInput() {
+    const inputValue = getInputValue();
+    return (
+        inputValue >= 0 ||
+        inputValue <= maxNum ||
+        numInput.value !== '' ||
+        !numInput.value.startsWith('.')
+    );
+}
 //Gissa
 function makeGuess() {
     // Sparar värde från input
