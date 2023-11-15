@@ -4,6 +4,8 @@ let guess;
 let attempts = 0;
 const maxAttempts = 5;
 let maxNum = 100;
+let recentGuessLow = [];
+let recentGuesshigh = [];
 
 //* Hämta element
 const appContainer = document.getElementById('app-container');
@@ -86,6 +88,11 @@ function gameOver() {
     })
 }
 
+function recentGuess() {
+    
+
+}
+
 
 //*----------Huvudprogram----------*//
 
@@ -94,10 +101,7 @@ playAgainBtn.style.visibility = 'hidden';
 //* Generera det slumpvisa talet
 randomNum = Math.floor(Math.random() * maxNum + 1);
 console.log(randomNum);
-
 attemptsLeft.textContent = `❤️ ${maxAttempts - attempts}`;
-
-
 infoText.textContent = `Type a number between 0 - ${maxNum}`;
 
 //* Eventlyssnare för klick på knapp
