@@ -4,8 +4,7 @@ let guess;
 let attempts = 0;
 const maxAttempts = 5;
 let maxNum = 100;
-let recentGuessLow = [];
-let recentGuesshigh = [];
+let recentGuess = [randomNum];
 
 //* Hämta element
 const appContainer = document.getElementById('app-container');
