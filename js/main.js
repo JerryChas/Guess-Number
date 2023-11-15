@@ -109,6 +109,8 @@ function addRecentGuess() {
     }
     // Anropa sorteringsfunktionen
     recentGuess = sortArrayNumerically(recentGuess);
+    //göra elementet synligt
+    recentGuessElement.style.visibility = 'unset';
     //presentera gissade nummer 
     recentGuessElement.innerText = `${recentGuess.join('  ')}`;
 }
@@ -123,6 +125,7 @@ function sortArrayNumerically(array) {
 //*----------Huvudprogram----------*//
 
 playAgainBtn.style.visibility = 'hidden';
+recentGuessElement.style.visibility = 'hidden';
 
 //* Generera det slumpvisa talet
 randomNum = Math.floor(Math.random() * maxNum + 1);
