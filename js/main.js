@@ -20,20 +20,6 @@ const recentGuessElement = document.getElementById('recent-guess')
 
 //* Funktioner
 
-// Funktion för att hämta värdet från input
-function getInputValue() {
-    return parseInt(numInput.value);
-}
-// Funktion för att kontrollera inmatningen
-function validateInput() {
-    const inputValue = getInputValue();
-    return (
-        inputValue >= 0 ||
-        inputValue <= maxNum ||
-        numInput.value !== '' ||
-        !numInput.value.startsWith('.')
-    );
-}
 //Gissa
 function makeGuess() {
     // Sparar värde från input
@@ -149,8 +135,11 @@ recentGuessElement.style.visibility = 'hidden';
 
 //* Generera det slumpvisa talet
 randomNum = Math.floor(Math.random() * maxNum + 1);
+//skriv ut randomNum i consolen
 console.log(randomNum);
+//skriver ut hur många försök
 attemptsLeft.textContent = `❤️ ${maxAttempts - attempts}`;
+//skriver ut infotext
 infoText.textContent = `Type a number between 0 - ${maxNum}`;
 
 //* Eventlyssnare för klick på knapp
