@@ -7,6 +7,11 @@
 }
 
 body {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard */
+
     background-color: rgb(51, 69, 62);
     display: grid;
     place-content: center;
@@ -38,16 +43,27 @@ body {
 #headline-h2 {}
 
 #num-input {
-    -moz-appearance: textfield;
-    -webkit-appearance: textfield;
-    
+    caret-color: transparent; /* Göm caret (markering) i input-rutan */
+    user-select: none; /* Förhindra textmarkering */
+    cursor: default;
+
     text-align: center;
     width: 6em;
     border-radius: 100px;
 
     &:focus {
-        outline: none;
+        outline-color: grey;
+        outline-style: groove;
     }
+    
+    /* Tar bort pilar i nummerrutan */
+    &::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+        display: none;
+      }
+      -moz-appearance: textfield;
+      -webkit-appearance: textfield;
+      appearance: textfield;  
 
 }
 #num-input-btn {
